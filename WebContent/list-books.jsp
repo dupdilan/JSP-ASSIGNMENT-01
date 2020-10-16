@@ -27,7 +27,7 @@
                     
                         <div class="panel-body"> <!-- open panel body -->
                       		<div style="padding: 60px;text-align: center;background: #1abc9c;color: white;font-size: 50px;">
-								<h1>WEB APPLICATION ASSIGNMENT <br> BOOK STORE </h1>
+								<h1>WEB APPLICATION ASSIGNMENT<br>Design and Develop JSP/Servlet/MVC based  CRUD database application <br> BOOK STORE </h1>
                          	</div>
                         </div><!-- close panel body -->
          </div><!-- close panel -->

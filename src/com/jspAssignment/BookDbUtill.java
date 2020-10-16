@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 
 
+
 public class BookDbUtill  {
 	
 	private DataSource dataSource;
@@ -155,6 +156,38 @@ public class BookDbUtill  {
 		}	
 	}
 
+public void updateBook(Book theBook) throws Exception {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+
+		try {
+			// get db connection
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			String sql = "update book "
+						+ "set title=?, author=?, costPrice=?, salesPrice? "
+						+ "where book_id=?";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set params
+			myStmt.setString(1, theBook.getTitle());
+			myStmt.setString(2, theBook.getAuthor());
+			myStmt.setInt(3, theBook.getCost());
+			myStmt.setInt(4, theBook.getSales());
+			myStmt.setInt(5, theBook.getId());
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			// clean up JDBC objects
+			close(myConn, myStmt, null);
+		}
+	}
 
 
 }

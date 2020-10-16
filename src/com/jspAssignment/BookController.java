@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 
+
 /**
  * Servlet implementation class BookController
  */
@@ -66,6 +67,14 @@ public class BookController extends HttpServlet {
 										addBook(request, response);
 										break;
 										
+									case "LOAD":
+										loadBook(request, response);
+										break;
+										
+									case "UPDATE":
+										updateBook(request, response);
+										break;	
+										
 									case "DELETE":
 										deleteBook(request, response);
 										break;
@@ -80,6 +89,37 @@ public class BookController extends HttpServlet {
 
 
 	}
+
+	private void loadBook(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+
+	private void updateBook(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+					// read student info from form data
+					int id = Integer.parseInt(request.getParameter("id"));
+					String title = request.getParameter("title");
+					String author = request.getParameter("author");
+					String cost = request.getParameter("cost");
+					int cost1=Integer.parseInt(cost);
+					String sales = request.getParameter("sales");
+					int sales1=Integer.parseInt(sales);
+					
+					// create a new book object
+					Book theBook = new Book(id,title,author,cost1,sales1);
+					
+					// perform update on database
+					bookDbUtil.updateBook(theBook);
+					
+					// send back to main page
+					listBooks(request, response);
+		
+		
+	}
+
 
 	private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
