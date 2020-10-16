@@ -50,9 +50,9 @@ public class BookController extends HttpServlet {
 			// read the "command" parameter
 						String theCommand = request.getParameter("command");
 									
-									// if the command is missing, then default to listing Bokks
+									// if the command is missing, then default to listing Books
 									if (theCommand == null) {
-										theCommand = "LIST";
+										theCommand = "LIST";									
 									}
 									
 									// route to the appropriate method
@@ -66,10 +66,13 @@ public class BookController extends HttpServlet {
 										addBook(request, response);
 										break;
 										
+									case "DELETE":
+										deleteBook(request, response);
+										break;
 									default:
 										listBooks(request, response);
 									}
-			
+									
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -77,6 +80,19 @@ public class BookController extends HttpServlet {
 
 
 	}
+
+	private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		int id1=Integer.parseInt(id);
+		
+		// delete Book from database
+					bookDbUtil.deleteBook(id1);
+					
+					// send back to main page
+					listBooks(request, response);
+	}
+
 
 	private void addBook(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -93,7 +109,7 @@ public class BookController extends HttpServlet {
 		
 			bookDbUtil.addBook(theBook);
 								
-				// send back to main page (the student list)
+				// send back to main page
 		listBooks(request, response);
 		
 	}

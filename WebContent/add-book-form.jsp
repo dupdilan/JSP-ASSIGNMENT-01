@@ -18,7 +18,13 @@
                          	</div>
                         </div><!-- close panel body -->
          </div><!-- close panel -->
-    
+     <div class="text-center">
+				<input type="button" class="btn btn-primary btn-lg text-center" value="BACK TO LIST OF BOOKS" 
+				   onclick="window.location.href='BookController'; return false;"
+				   class="list-book-button"
+					/>	
+		</div>			
+		<br>
 
 
 <div class="container"><!-- open container -->
@@ -63,11 +69,20 @@
 
         <div class="col-md-12">
             <div class="form-group row">
-                <label for="inputKey" class="col-md-2 control-label">COST PRICE:</label>
+                <label for="inputKey" class="col-md-3 control-label">COST PRICE:</label>
                 <div class="col-md-3">
                     <input type="number" class="form-control" id="txtCostPrice" name="txtCostPrice" placeholder="Input Cost Price" required>
                 </div>
-                <label for="inputValue" class="col-md-2 control-label">SALES PRICE :</label>
+            </div>
+        </div>
+
+    </div>
+ <!-- Next Form Group -->
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <div class="form-group row">
+                <label for="inputValue" class="col-md-3 control-label">SALES PRICE :</label>
                 <div class="col-md-3">
                     <input type="number" class="form-control" id="txtSalesPrice" name="txtSalesPrice" placeholder="Input Sales Price">
                 </div>
@@ -75,7 +90,6 @@
         </div>
 
     </div>
-
 
 <!-- Next Form Group -->
                 <div class="div-action pull pull-right ">

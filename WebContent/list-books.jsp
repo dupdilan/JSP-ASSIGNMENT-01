@@ -19,9 +19,9 @@
            <script src="https://cdn.datatables.net/buttons/1.6.3/js/buttons.print.min.js"></script>
 </head>
 <%
-     List<Book> theBooks = (List<Book>) request.getAttribute("BOOK_LIST");
-
+	List<Book> theBooks = (List<Book>) request.getAttribute("BOOK_LIST");
 %>
+
 <body>
 <div class="panel panel-primary "> <!-- open panel -->
                     
@@ -31,7 +31,13 @@
                          	</div>
                         </div><!-- close panel body -->
          </div><!-- close panel -->
-
+         <div class="text-center">
+				<input type="button" class="btn btn-primary btn-lg text-center" value="ADD BOOK" 
+				   onclick="window.location.href='add-book-form.jsp'; return false;"
+				   class="add-book-button"
+					/>	
+		</div>			
+		<br>
 <div class="container"><!-- open container -->
     <div class="row"><!-- open row -->
         <div class="col-md-12"> <!-- open 12 col -->
@@ -42,22 +48,24 @@
 					    <table id="book_data" class="table table-striped table-bordered display" >
 					        <thead>
 					            <tr>
-					                <th>Book Name</th>
-					                <th>Author</th>
-					                <th>Cost Price</th>
-					                <th>Sales Price</th>
+					                <th>BOOK NAME</th>
+					                <th>AUTHOR</th>
+					                <th>COST PRICE</th>
+					                <th>SALES PRICE</th> 
+					                <th>ACTION</th> 
 					            </tr>
 					        </thead>
-					    		<% for (Book tempBook : theBooks){ %>
-				                 <tr>
-				                   <td><%=tempBook.getTitle() %></td>
-				                   <td><%=tempBook.getAuthor() %></td>
-				                   <td><%=tempBook.getCost() %></td>
-				                   <td><%=tempBook.getSales() %></td>
-
-				                 </tr>
-				                 
-				                 <%} %>
+					    		<% for(Book bookList : theBooks) { %>
+							<tr>	
+								<td> <%= bookList.getTitle() %> </td>
+								<td> <%= bookList.getAuthor() %></td>
+								<td> <%= bookList.getCost() %> </td>
+								<td> <%= bookList.getSales() %></td>
+								<% int id= bookList.getId(); %>
+								<td><a onclick="return confirm('Are you sure to DELETE This ?')"  href="BookController?id=<%= id %>&command=DELETE">DELETE</a></td>
+							</tr>
+							<% } %>
+							
 					    </table>
 					
 					</div> 

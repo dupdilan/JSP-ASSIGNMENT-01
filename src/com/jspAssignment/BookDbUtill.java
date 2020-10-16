@@ -127,6 +127,33 @@ public class BookDbUtill  {
 		}		
 		
 	}
+    
+    public void deleteBook(int id) throws Exception {
+
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		try {
+			// get connection to database
+			myConn = dataSource.getConnection();
+			
+			// create sql to delete student
+			String sql = "delete from book where book_id=?";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set params
+			myStmt.setInt(1, id);
+			
+			// execute sql statement
+			myStmt.execute();
+		}
+		finally {
+			// clean up JDBC code
+			close(myConn, myStmt, null);
+		}	
+	}
 
 
 
